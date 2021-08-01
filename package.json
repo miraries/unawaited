@@ -1,8 +1,14 @@
 {
   "name": "unawaited",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Check for unawaited (floating) async function calls",
-  "keywords": ["lint", "floating", "async", "await", "function"],
+  "keywords": [
+    "lint",
+    "floating",
+    "async",
+    "await",
+    "function"
+  ],
   "main": "./dist/index.js",
   "bugs": {
     "url": "https://github.com/miraries/unawaited/issues"
