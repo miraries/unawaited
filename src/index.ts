@@ -31,7 +31,7 @@ if (process.argv.slice(2).length === 0) {
 }
 
 const getIgnoredLines = async function (): Promise<string[]> {
-  if (options.ignorePath?.length <= 1) {
+  if (options.ignorePath === undefined || options.ignorePath.length < 1) {
     return []
   }
 
@@ -85,12 +85,12 @@ const printResults = function (results: TraverseResults, ignoredLines: string[] 
   const results = await traverse(options.glob)
 
   if (results.length === 0) {
-    print(chalk.bgGreen('All good!'))
+    print(chalk.bgGreen.bold('All good!'))
 
     return
   }
 
-  print(chalk.bgRed.bold(`${results.length} problems found!`))
+  print(chalk.bgRed.bold(`${results.length} problem(s) found!`))
   print(chalk.underline('List of functions defined as async, but are not awaited when called'))
 
   const shouldError = printResults(results, ignoredLines)

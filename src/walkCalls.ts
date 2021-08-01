@@ -14,16 +14,20 @@ export default function walkCalls (ast: Node): Array<{ name: string, loc: { line
 
   walk.ancestor(ast, {
     CallExpression (expression: any, ancestors: any) {
-      if (expression.callee.type === 'MemberExpression') {
-        const functionName: string = expression.callee.property.name
+      if (!['MemberExpression', 'Identifier'].includes(expression.callee.type)) {
+        return
+      }
 
-        const awaited = ancestors.some((a: any) => a.type === 'AwaitExpression')
+      const functionName: string = expression.callee.type === 'MemberExpression'
+        ? expression.callee.property.name
+        : expression.callee.name
 
-        if (awaited === false) {
-          debug('CallExpression', expression.loc.start)
+      const awaited = ancestors.some((a: any) => a.type === 'AwaitExpression')
 
-          functions.push({ name: functionName, loc: expression.loc.start })
-        }
+      if (awaited === false) {
+        debug('CallExpression', expression.loc.start)
+
+        functions.push({ name: functionName, loc: expression.loc.start })
       }
     }
   }, walkOptions)
