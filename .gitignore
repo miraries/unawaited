@@ -1,0 +1,9 @@
+.env
+.idea
+.vscode
+.scannerwork
+node_modules
+coverage
+npm-debug.log
+test-results
+lib
