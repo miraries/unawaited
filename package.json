@@ -1,8 +1,14 @@
 {
   "name": "unawaited",
   "version": "1.0.0",
-  "description": "Check for unawaited async function calls",
+  "description": "Check for unawaited (floating) async function calls",
+  "keywords": ["lint", "floating", "async", "await", "function"],
   "main": "./dist/index.js",
+  "bugs": {
+    "url": "https://github.com/miraries/unawaited/issues"
+  },
+  "homepage": "https://github.com/miraries/unawaited",
+  "repository": "github:miraries/unawaited",
   "bin": {
     "unawaited": "./dist/index.js"
   },
@@ -33,7 +39,7 @@
     "build": "tsc -p .",
     "lint": "ts-standard",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run build"
+    "prepare": "npm run lint && npm run build"
   },
   "author": "Ivan Kotlaja",
   "license": "GPL-3.0"
