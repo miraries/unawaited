@@ -2,9 +2,9 @@
   "name": "unawaited",
   "version": "1.0.0",
   "description": "Check for unawaited async function calls",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "bin": {
-    "unawaited": "./lib/index.js"
+    "unawaited": "./dist/index.js"
   },
   "dependencies": {
     "acorn-walk": "^8.1.1",
@@ -25,12 +25,15 @@
     "@types/lodash": "^4.14.171",
     "@types/node": "^16.4.10",
     "ts-node-dev": "^1.1.8",
+    "ts-standard": "^10.0.0",
     "typescript": "^4.3.5"
   },
   "scripts": {
     "start": "ts-node-dev --files src/index.ts",
     "build": "tsc -p .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "ts-standard",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build"
   },
   "author": "Ivan Kotlaja",
   "license": "GPL-3.0"
